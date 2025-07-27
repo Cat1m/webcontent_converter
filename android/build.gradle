@@ -6,6 +6,8 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        // Thêm jitpack cho alternative dependencies
+        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
@@ -18,6 +20,8 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        // Thêm jitpack cho alternative dependencies
+        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -49,5 +53,16 @@ android {
 
     dependencies {
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+        
+        // ✅ HTML to Bitmap dependencies
+        implementation 'com.izettle.html2bitmap:html2bitmap:1.0.1'
+        
+        // ✅ WebView và Android support
+        implementation 'androidx.webkit:webkit:1.8.0'
+        implementation 'androidx.core:core-ktx:1.8.0'
+        implementation 'androidx.appcompat:appcompat:1.6.1'
+        
+        // ✅ Alternative nếu izettle không work
+        // implementation 'com.github.gungoren:Html2Bitmap:1.0.0'
     }
 }
