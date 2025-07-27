@@ -6,8 +6,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        // Thêm jitpack cho alternative dependencies
-        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
@@ -20,8 +18,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        // Thêm jitpack cho alternative dependencies
-        maven { url 'https://jitpack.io' }
+        // Chỉ giữ repositories chính thống
     }
 }
 
@@ -29,9 +26,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    // THÊM DÒNG NÀY ĐỂ FIX LỖI NAMESPACE
     namespace 'com.mylekha.webcontent_converter'
-    
     compileSdkVersion 33
 
     compileOptions {
@@ -54,15 +49,12 @@ android {
     dependencies {
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
         
-        // ✅ HTML to Bitmap dependencies
-        implementation 'com.izettle.html2bitmap:html2bitmap:1.0.1'
-        
-        // ✅ WebView và Android support
+        // ✅ Chỉ dùng WebView native - không cần external libs
         implementation 'androidx.webkit:webkit:1.8.0'
         implementation 'androidx.core:core-ktx:1.8.0'
         implementation 'androidx.appcompat:appcompat:1.6.1'
         
-        // ✅ Alternative nếu izettle không work
-        // implementation 'com.github.gungoren:Html2Bitmap:1.0.0'
+        // For PDF generation
+        implementation 'com.itextpdf:itext7-core:7.2.5'
     }
 }
